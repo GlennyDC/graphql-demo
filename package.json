@@ -26,6 +26,7 @@
     "dataloader": "^2.0.0",
     "graphql": "^14",
     "koa": "^2.13.0",
+    "source-map-support": "^0.5.19",
     "winston": "^3.3.3"
   },
   "devDependencies": {
@@ -43,8 +44,11 @@
     "eslint-plugin-jsdoc": "^28.5.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-promise": "^4.2.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
     "nodemon": "^2.0.4",
     "prettier": "2.0.5",
+    "rimraf": "^3.0.2",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
   }
