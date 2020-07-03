@@ -11,7 +11,7 @@
     "docker:dev": "docker-compose -f docker-compose.dev.yml up --build",
     "dev": "nodemon --config nodemon.json",
     "build": "yarn run build:ts && yarn run copy:gql",
-    "start": "NODE_ENV=production node dist/index.js",
+    "start": "NODE_ENV=production node -r source-map-support/register dist/index.js",
     "prebuild": "rimraf dist/* && yarn run generate:gql-types",
     "build:ts": "tsc -p tsconfig.json",
     "copy:gql": "copyfiles -u 1 src/modules/**/*.gql dist/",
