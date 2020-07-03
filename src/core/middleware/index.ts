@@ -1,0 +1,1 @@
+export { makeResponseTimeMiddleware } from './makeResponseTimeMiddleware';

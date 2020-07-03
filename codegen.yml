@@ -1,0 +1,18 @@
+overwrite: true
+schema: src/modules/**/*.gql
+silent: true
+generates:
+  src/types/schema.d.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-resolvers'
+    config:
+      maybeValue: T | undefined
+      contextType: ./context#Context
+      mappers:
+        Book: ../modules/book/book#Book as IBook
+        Author: ../modules/author/author#Author as IAuthor
+        Category: ../modules/category/category#Category as ICategory
+hooks:
+  afterAllFileWrite:
+    - yarn run lint:fix

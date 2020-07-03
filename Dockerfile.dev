@@ -1,0 +1,17 @@
+FROM node:14.4.0-alpine
+
+ENV NODE_ENV=development
+
+RUN mkdir /app && chown -R node:node /app
+
+WORKDIR /app
+
+USER node
+
+COPY --chown=node:node package.json yarn.lock ./
+
+RUN yarn install
+
+COPY --chown=node:node . .
+
+ENTRYPOINT ["node_modules/.bin/nodemon", "--config", "nodemon.json"]

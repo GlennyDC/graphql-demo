@@ -1,0 +1,51 @@
+{
+  "name": "api-seed",
+  "version": "0.0.0",
+  "description": "Seed for an easy and ready to go containerized GraphQL Koa API.",
+  "main": "src/index.ts",
+  "repository": "https://github.com/GlennyDC/api-seed",
+  "author": "Glenny De Cock",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "docker:dev": "docker-compose -f docker-compose.dev.yml up --build",
+    "dev": "nodemon --config nodemon.json",
+    "build": "yarn run build:ts && yarn run copy:gql",
+    "start": "NODE_ENV=production node dist/index.js",
+    "prebuild": "rimraf dist/* && yarn run generate:gql-types",
+    "build:ts": "tsc -p tsconfig.json",
+    "copy:gql": "copyfiles -u 1 src/modules/**/*.gql dist/",
+    "generate:gql-types": "graphql-codegen --config codegen.yml",
+    "watch:gql-types": "graphql-codegen --config codegen.yml --watch 'src/**/*.gql'",
+    "lint": "eslint . --cache --ext .ts,.json",
+    "lint:fix": "eslint . --cache --ext .ts,.json --fix"
+  },
+  "dependencies": {
+    "@graphql-toolkit/file-loading": "^0.10.7",
+    "apollo-server-koa": "^2.15.0",
+    "dataloader": "^2.0.0",
+    "graphql": "^14",
+    "koa": "^2.13.0",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "1.15.4",
+    "@graphql-codegen/typescript": "1.15.4",
+    "@graphql-codegen/typescript-resolvers": "1.15.4",
+    "@types/koa": "^2.11.3",
+    "@types/node": "^14.0.14",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "copyfiles": "^2.3.0",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsdoc": "^28.5.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "nodemon": "^2.0.4",
+    "prettier": "2.0.5",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  }
+}

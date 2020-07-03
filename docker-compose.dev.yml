@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3000:3000'
+    volumes:
+      # Don't do this: - .:/app:delegated, this will cause a lot of problems
+      # with the node_modules being mounted from the host, you never want to
+      # use node_modules from the host in your container
+      - ./src:/app/src:delegated
+      - ./package.json:/app/package.json:delegated
+    # Run an init inside the container that forwards signals
+    # and reaps processes.
+    init: true
+    image: awesome_image_name
+    container_name: awesome_container_name
