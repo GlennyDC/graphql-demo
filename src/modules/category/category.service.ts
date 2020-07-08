@@ -8,7 +8,7 @@ const logger = makeLogger('category-service');
 export const getCategoriesByIds = async (
   ids: readonly string[],
 ): Promise<Category[]> => {
-  logger.info(`Get categories [${ids}]`);
+  logger.verbose(`Get categories [${ids}]`);
 
   await randomSleep();
 

@@ -6,7 +6,7 @@ import { authors } from './author.data';
 const logger = makeLogger('author-service');
 
 export const getAuthors = async (limit: number): Promise<Author[]> => {
-  logger.info(`Get authors with a limit of [${limit}]`);
+  logger.verbose(`Get authors with a limit of [${limit}]`);
 
   await randomSleep();
 
@@ -16,7 +16,7 @@ export const getAuthors = async (limit: number): Promise<Author[]> => {
 export const getAuthorsByIds = async (
   ids: readonly string[],
 ): Promise<Author[]> => {
-  logger.info(`Get authors [${ids}]`);
+  logger.verbose(`Get authors [${ids}]`);
 
   await randomSleep();
 

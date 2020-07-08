@@ -12,7 +12,7 @@ const authorResolvers: Resolvers = {
       _,
       { authorLoader },
     ): Promise<Author[]> => {
-      logger.verbose(`Get all authors of book [${id}]`);
+      logger.silly(`Get all authors of book [${id}]`);
       // eslint-disable-next-line
       // @ts-ignore
       return authorLoader.loadMany(authorIds);
@@ -20,7 +20,7 @@ const authorResolvers: Resolvers = {
   },
   Query: {
     authors: async (_, { limit = 10 }): Promise<Author[]> => {
-      logger.verbose(`Get authors with a limit of [${limit}]`);
+      logger.silly(`Get authors with a limit of [${limit}]`);
       return authorService.getAuthors(limit);
     },
   },

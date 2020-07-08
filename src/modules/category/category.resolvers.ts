@@ -11,7 +11,7 @@ const categoryResolvers: Resolvers = {
       _,
       { categoryLoader },
     ): Promise<Category[]> => {
-      logger.verbose(`Get all categories of book [${id}]`);
+      logger.silly(`Get all categories of book [${id}]`);
       // eslint-disable-next-line
       // @ts-ignore
       return categoryLoader.loadMany(categoryIds);

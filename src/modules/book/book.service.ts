@@ -6,7 +6,7 @@ import { books } from './book.data';
 const logger = makeLogger('book-service');
 
 export const getBookById = async (id: string): Promise<Book> => {
-  logger.info(`Get book [${id}]`);
+  logger.verbose(`Get book [${id}]`);
 
   await randomSleep();
 
@@ -18,7 +18,7 @@ export const getBookById = async (id: string): Promise<Book> => {
 };
 
 export const getBooks = async (limit: number): Promise<Book[]> => {
-  logger.info(`Get books with a limit of [${limit}]`);
+  logger.verbose(`Get books with a limit of [${limit}]`);
 
   await randomSleep();
 
@@ -28,7 +28,7 @@ export const getBooks = async (limit: number): Promise<Book[]> => {
 export const getBooksByIds = async (
   ids: readonly string[],
 ): Promise<Book[]> => {
-  logger.info(`Get books [${ids}]`);
+  logger.verbose(`Get books [${ids}]`);
 
   await randomSleep();
 
