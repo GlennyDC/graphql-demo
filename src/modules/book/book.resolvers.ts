@@ -1,3 +1,4 @@
+import { throwIfArrayHasError } from '../../common';
 import { makeLogger } from '../../core';
 import { Resolvers } from '../../types';
 import { Book } from './book';
@@ -19,9 +20,12 @@ const bookResolvers: Resolvers = {
   Author: {
     books: async ({ id, bookIds }, _, { bookLoader }): Promise<Book[]> => {
       logger.silly(`Get books of author [${id}]`);
-      // eslint-disable-next-line
-      // @ts-ignore
-      return bookLoader.loadMany(bookIds);
+
+      const books = await bookLoader.loadMany(bookIds);
+
+      throwIfArrayHasError(books);
+
+      return books as Book[];
     },
   },
 };

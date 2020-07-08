@@ -4,6 +4,7 @@
     "outDir": "dist",
     "module": "Commonjs",
     "target": "ES2020",
+    "pretty": true,
     "removeComments": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,

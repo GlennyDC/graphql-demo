@@ -1,3 +1,4 @@
+import { throwIfArrayHasError } from '../../common';
 import { makeLogger } from '../../core';
 import { Resolvers } from '../../types';
 import { Author } from './author';
@@ -13,9 +14,12 @@ const authorResolvers: Resolvers = {
       { authorLoader },
     ): Promise<Author[]> => {
       logger.silly(`Get all authors of book [${id}]`);
-      // eslint-disable-next-line
-      // @ts-ignore
-      return authorLoader.loadMany(authorIds);
+
+      const authors = await authorLoader.loadMany(authorIds);
+
+      throwIfArrayHasError(authors);
+
+      return authors as Author[];
     },
   },
   Query: {

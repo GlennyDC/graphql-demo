@@ -12,8 +12,8 @@ const categoryResolvers: Resolvers = {
       { categoryLoader },
     ): Promise<Category[]> => {
       logger.silly(`Get all categories of book [${id}]`);
-      // eslint-disable-next-line
-      // @ts-ignore
+
+      // @ts-expect-error
       return categoryLoader.loadMany(categoryIds);
     },
   },
