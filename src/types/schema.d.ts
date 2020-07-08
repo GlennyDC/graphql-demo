@@ -25,6 +25,7 @@ export type Author = {
   books: Array<Book>;
   id: Scalars['ID'];
   name: Scalars['String'];
+
 };
 
 export type Book = {

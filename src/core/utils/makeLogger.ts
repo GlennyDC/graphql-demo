@@ -23,7 +23,7 @@ const makeConsoleFormat = (): Format =>
  *
  * @returns {Logger} A Winston logger
  */
-const makeLogger = (moduleName: string): Logger =>
+export const makeLogger = (moduleName: string): Logger =>
   createLogger({
     level: 'info',
     transports: [
@@ -33,5 +33,3 @@ const makeLogger = (moduleName: string): Logger =>
     ],
     defaultMeta: { moduleName },
   });
-
-export { makeLogger };
