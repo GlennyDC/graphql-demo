@@ -8,14 +8,14 @@ import { GraphQLSchema } from 'graphql';
 import Koa from 'koa';
 import { join } from 'path';
 
-import { createLoaders } from './utils';
+import { createContext } from './createContext';
 
 const makeSchema = (): GraphQLSchema => {
   const typeDefs = loadFiles<string>(
-    join(__dirname, '../../modules/**/*.typeDefs.gql'),
+    join(__dirname, '../modules/**/*.typeDefs.gql'),
   );
   const resolvers = loadFiles<IResolvers>(
-    join(__dirname, '../../modules/**/*.resolvers.*'),
+    join(__dirname, '../modules/**/*.resolvers.*'),
   );
   const schema = makeExecutableSchema({
     typeDefs,
@@ -31,7 +31,7 @@ export const installApolloServer = (app: Koa): void => {
     debug: true,
     playground: true,
     introspection: true,
-    context: createLoaders(),
+    context: createContext(),
   });
   apolloServer.applyMiddleware({ app });
 };

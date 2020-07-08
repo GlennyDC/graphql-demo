@@ -6,8 +6,6 @@ import {
   makeResponseTimeMiddleware,
 } from './core';
 
-console.log(makeLogger);
-
 const logger = makeLogger('app');
 
 const app = new Koa();
