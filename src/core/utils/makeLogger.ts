@@ -25,7 +25,7 @@ const makeConsoleFormat = (): Format =>
  */
 export const makeLogger = (moduleName: string): Logger =>
   createLogger({
-    level: 'info',
+    level: 'silly',
     transports: [
       new transports.Console({
         format: makeConsoleFormat(),

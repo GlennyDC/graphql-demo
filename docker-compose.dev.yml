@@ -15,5 +15,5 @@ services:
     # Run an init inside the container that forwards signals
     # and reaps processes.
     init: true
-    image: awesome_image_name
-    container_name: awesome_container_name
+    image: graphql_demo
+    container_name: graphql_demo
