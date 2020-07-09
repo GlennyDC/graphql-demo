@@ -1,10 +1,10 @@
 import DataLoader from 'dataloader';
 
 import { Book } from './book';
-import { getBooksByIds } from './book.service';
+import * as bookService from './book.service';
 
 const loaderFn = async (keys: readonly string[]): Promise<(Book | Error)[]> => {
-  const books = await getBooksByIds(keys);
+  const books = await bookService.getBooksByIds(keys);
 
   const bookMap = new Map<string, Book>();
   books.forEach((book) => bookMap.set(book.id, book));

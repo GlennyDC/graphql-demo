@@ -1,12 +1,12 @@
 import DataLoader from 'dataloader';
 
 import { Author } from './author';
-import { getAuthorsByIds } from './author.service';
+import * as authorService from './author.service';
 
 const loaderFn = async (
   keys: readonly string[],
 ): Promise<(Author | Error)[]> => {
-  const authors = await getAuthorsByIds(keys);
+  const authors = await authorService.getAuthorsByIds(keys);
 
   const authorMap = new Map<string, Author>();
   authors.forEach((author) => authorMap.set(author.id, author));

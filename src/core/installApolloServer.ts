@@ -31,7 +31,7 @@ export const installApolloServer = (app: Koa): void => {
     debug: true,
     playground: true,
     introspection: true,
-    context: createContext(),
+    context: createContext,
   });
   apolloServer.applyMiddleware({ app });
 };

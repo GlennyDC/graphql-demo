@@ -1,12 +1,12 @@
 import DataLoader from 'dataloader';
 
 import { Category } from './category';
-import { getCategoriesByIds } from './category.service';
+import * as categoryService from './category.service';
 
 const loaderFn = async (
   keys: readonly string[],
 ): Promise<(Category | Error)[]> => {
-  const categorys = await getCategoriesByIds(keys);
+  const categorys = await categoryService.getCategoriesByIds(keys);
 
   const categoryMap = new Map<string, Category>();
   categorys.forEach((category) => categoryMap.set(category.id, category));
